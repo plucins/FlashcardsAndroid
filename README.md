@@ -1,7 +1,7 @@
 # FlashcardsAndroid
 
 #Description
-  Application to support language skill development. At the bigining with suppor for one language in futore, we hope add more
+  Application to support language skill development. At the beginning with support for one language, in the future we hope to add more.
   
  #Team 
   Sławek (s15976) Adam (s15814)
