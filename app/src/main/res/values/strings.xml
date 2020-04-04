@@ -3,4 +3,6 @@
     <string name="start_flashCard">Fiszki</string>
     <string name="start_quizButton">Quiz</string>
     <string name="mainText">Aplikacja do nauki</string>
+    <string name="backToMenu_button_text">Menu</string>
+    <string name="nextFlashCard_button_text">Następna</string>
 </resources>

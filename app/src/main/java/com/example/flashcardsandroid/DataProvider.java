@@ -1,5 +1,6 @@
 package com.example.flashcardsandroid;
 
+import com.example.flashcardsandroid.model.FlashCard;
 import com.example.flashcardsandroid.model.Question;
 
 import java.util.ArrayList;
@@ -17,5 +18,15 @@ public class DataProvider {
 
         return questions;
 
+    }
+
+    public List<FlashCard> getFlashCards() {
+        List<FlashCard> flashCards = new ArrayList<>();
+        flashCards.add(new FlashCard("pies", "dog"));
+        flashCards.add(new FlashCard("dom", "house"));
+        flashCards.add(new FlashCard("lampa", "lamp"));
+        flashCards.add(new FlashCard("komputer", "computer"));
+
+        return flashCards;
     }
 }
