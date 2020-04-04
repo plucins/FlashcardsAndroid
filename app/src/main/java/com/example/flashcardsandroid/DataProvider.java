@@ -10,10 +10,12 @@ public class DataProvider {
     public List<Question> getQuestions() {
 
         List<Question> questions = new ArrayList<>();
-        questions.add(new Question("Grzie ropoczął się wirus?", "Polska", "USA", "Chiny", 3));
-        questions.add(new Question("Czy uda nam nie przeżyć", "Tak", "Nie", "Nie wiem", 3));
-        questions.add(new Question("Jaka musi byc odlełość między osobami?", "1m", "2m", "4m", 2));
-        questions.add(new Question("Czy możesz zorganizowac przyjęcie na 13 osób?", "Nie", "Tak", "Nie wiem", 1));
+        questions.add(new Question("Great Britain is an island made up of", "England, Scotland and Wales", "Britain, Scotland and Wales", "England and Ireland", 2));
+        questions.add(new Question("England, Ireland, Scotland and Wales became one state in", "1536", "1708", "1800", 1));
+        questions.add(new Question("The leek and daffodil are both plants used to symbolize", "Scotland", "Wales", "Yorkshire", 3));
+        questions.add(new Question("In 1972 the UK joined", "NATO", "the European Economic Community", "the G7 group", 1));
+        questions.add(new Question("The two main political parties are the Conservatives and", "Labour", "Liberals", "Social Democrats", 2));
+        questions.add(new Question("The 20 or so most senior politicians are called the", "cabinet", "committee", "supreme council", 2));
 
         return questions;
 
