@@ -22,14 +22,14 @@
             android:textAlignment="center"
             android:paddingHorizontal="40dp"
             android:paddingVertical="20dp"
-            tools:targetApi="o"/>
+    />
 
 
 
     <Button
             android:id="@+id/button_start_quiz"
             android:text="@string/start_quizButton"
-            android:textColor="#FFFFFFFF"
+            android:textColor="@color/colorPrimary"
             android:textSize="30sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -42,13 +42,13 @@
             android:layout_marginTop="20sp"
             android:paddingHorizontal="30sp"
             android:paddingVertical="10sp"
-            tools:targetApi="o"/>
+    />
 
 
     <Button
             android:id="@+id/button_start_flashcard"
             android:text="@string/start_flashCard"
-            android:textColor="#FFFFFFFF"
+            android:textColor="@color/colorPrimary"
             android:textSize="30sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -62,7 +62,7 @@
             android:layout_marginTop="20sp"
             android:paddingHorizontal="30sp"
             android:paddingVertical="10sp"
-
+            
     />
 
 
