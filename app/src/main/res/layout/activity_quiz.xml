@@ -14,7 +14,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Score: 0"
-            android:textColor="@android:color/black"
+            android:textColor="@color/colorFont"
     />
 
     <TextView
@@ -22,8 +22,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Question: 1/x"
-            android:textColor="@android:color/black"
+            android:textColor="@color/colorFont"
             android:layout_below="@id/text_view_score"
+
     />
 
     <TextView
@@ -32,7 +33,7 @@
             android:layout_height="wrap_content"
             android:text="Tu będzie pytanie"
             android:textSize="20sp"
-            android:textColor="@android:color/black"
+            android:textColor="@color/colorFont"
             android:layout_marginBottom="16dp"
             android:textAlignment="center"
             android:layout_above="@id/radio_group"
@@ -43,12 +44,14 @@
             android:id="@+id/radio_group"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true">
+            android:layout_centerVertical="true"
+    >
 
         <RadioButton
                 android:id="@+id/radio_button1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colorFont"
                 android:text="Option 1"
         />
 
@@ -56,6 +59,7 @@
                 android:id="@+id/radio_button2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colorFont"
                 android:text="Option 2"
         />
 
@@ -63,6 +67,7 @@
                 android:id="@+id/radio_button3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colorFont"
                 android:text="Option 3"
         />
     </RadioGroup>
@@ -72,9 +77,11 @@
             android:id="@+id/button_confirm_next"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Confirm"
+            android:text="@string/next_question_button"
             android:layout_below="@id/radio_group"
-            android:layout_marginTop="16sp"
+            android:layout_marginTop="20sp"
+            android:background="@drawable/buttonshape"
+            android:textColor="@color/colorFont"
     />
 
 </RelativeLayout>
