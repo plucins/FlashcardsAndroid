@@ -7,4 +7,33 @@
         android:layout_height="match_parent"
         tools:context=".FlashCardActivity">
 
+    <Button
+        android:id="@+id/flashCardBackToMenuButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:text="@string/backToMenu_button_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/nextFlashCardButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:text="@string/nextFlashCard_button_text"
+        app:layout_constraintBottom_toTopOf="@+id/flashCardBackToMenuButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <fragment
+        android:id="@+id/fragment3"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="409dp"
+        android:layout_height="553dp"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_graph"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
