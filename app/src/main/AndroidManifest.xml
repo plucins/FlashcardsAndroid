@@ -9,7 +9,11 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".FlashCardActivity">
+        </activity>
+        <activity android:name=".QuizActivity">
+        </activity>
+        <activity android:name=".StartingScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

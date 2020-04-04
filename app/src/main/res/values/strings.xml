@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">FlashcardsAndroid</string>
+    <string name="start_flashCard">Fiszki</string>
+    <string name="start_quizButton">Quiz</string>
+    <string name="mainText">Aplikacja do nauki</string>
 </resources>
