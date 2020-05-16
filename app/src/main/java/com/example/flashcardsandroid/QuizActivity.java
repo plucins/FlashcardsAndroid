@@ -89,7 +89,7 @@ public class QuizActivity extends AppCompatActivity {
             questionCounter++;
             textViewQuestionCount.setText("Pytanie: " + questionCounter + "/" + questionCountTotal);
             answered = false;
-            buttonConfirmNext.setText("Potiwerdz");
+            buttonConfirmNext.setText("Potwierdz");
         } else {
             finishQuiz();
         }
