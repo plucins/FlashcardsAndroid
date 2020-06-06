@@ -10,11 +10,20 @@
         tools:context=".QuizActivity">
 
     <TextView
+            android:id="@+id/text_view_highscore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Najwyższy wynik: 0"
+            android:textColor="@color/colorFont"
+    />
+
+    <TextView
             android:id="@+id/text_view_score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Score: 0"
             android:textColor="@color/colorFont"
+            android:layout_below="@id/text_view_highscore"
     />
 
     <TextView
@@ -26,6 +35,7 @@
             android:layout_below="@id/text_view_score"
 
     />
+
 
     <TextView
             android:id="@+id/text_view_question"

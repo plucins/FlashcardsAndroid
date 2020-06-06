@@ -2,11 +2,13 @@
 package com.example.flashcardsandroid;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.flashcardsandroid.model.Question;
 
@@ -15,6 +17,14 @@ import java.util.List;
 
 public class QuizActivity extends AppCompatActivity {
     public static  final String EXTRA_SCORE = "extraScore";
+
+
+
+    public static final String SHARED_PREFS = "sharedPrefs";
+    public static final String KEY_HIGHSCORE = "keyHighscore";
+
+    private TextView textViewHighscore;
+    private int highscore;
 
     private TextView textViewQuestion;
     private TextView textViewScore;
@@ -47,6 +57,8 @@ public class QuizActivity extends AppCompatActivity {
         rb2 = findViewById(R.id.radio_button2);
         rb3 = findViewById(R.id.radio_button3);
         buttonConfirmNext = findViewById(R.id.button_confirm_next);
+        textViewHighscore = findViewById(R.id.text_view_highscore);
+        loadHighscore();
 
         textColorDefaultRb = rb1.getTextColors();
 
@@ -144,6 +156,34 @@ public class QuizActivity extends AppCompatActivity {
         }else {
             buttonConfirmNext.setText("Koniec");
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+
+                int score = data.getIntExtra(QuizActivity.EXTRA_SCORE, 0);
+                if(score > highscore) {
+                    updateHighscore(score);
+
+        }
+    }
+
+    private void loadHighscore() {
+        SharedPreferences preferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        highscore = preferences.getInt(KEY_HIGHSCORE, 0);
+        textViewHighscore.setText("Highscore :" + highscore);
+    }
+
+    private void updateHighscore(int highscoreNew) {
+        highscore = highscoreNew;
+        textViewHighscore.setText("Highscore :" + highscore);
+
+        SharedPreferences preferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putInt(KEY_HIGHSCORE, highscore);
+        editor.apply();
     }
 
 }
