@@ -44,6 +44,8 @@ public class QuizActivity extends AppCompatActivity {
     private int score;
     private boolean answered;
 
+    private long backPressedTime;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -190,6 +192,13 @@ public class QuizActivity extends AppCompatActivity {
         }
     }
 
-
-
+    @Override
+    public void onBackPressed() {
+        if(backPressedTime + 2000 > System.currentTimeMillis()) {
+            finishQuiz();
+        } else {
+            Toast.makeText(this, "Kliknij jeszcze raz, aby zakończyć", Toast.LENGTH_SHORT).show();
+        }
+        backPressedTime = System.currentTimeMillis();
+    }
 }
