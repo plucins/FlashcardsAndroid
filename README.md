@@ -1,4 +1,3 @@
-[![Build Status](https://travis-ci.org/plucins/FlashcardsAndroid.svg?branch=master)](https://travis-ci.org/plucins/FlashcardsAndroid)
 # FlashcardsAndroid
 
 #Description
