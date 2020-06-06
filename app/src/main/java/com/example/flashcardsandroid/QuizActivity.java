@@ -98,6 +98,9 @@ public class QuizActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * On QuizActivity showing next question after user requested
+     */
     private void showNextQuestion() {
         rb1.setTextColor(textColorDefaultRb);
         rb2.setTextColor(textColorDefaultRb);
@@ -124,6 +127,9 @@ public class QuizActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Method which starting count down on single question
+     */
     private void startCountDown() {
         countDownTimer = new CountDownTimer(timeLeftInMillis, 1000) {
             @Override
@@ -142,6 +148,9 @@ public class QuizActivity extends AppCompatActivity {
         }.start();
     }
 
+    /**
+     * Updating count down timer on view
+     */
     private void updateCountDownText() {
         int minutes = (int) (timeLeftInMillis / 1000) / 60;
         int seconds = (int) (timeLeftInMillis / 1000) % 60;
@@ -155,6 +164,9 @@ public class QuizActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Method provided finishing quiz functionality
+     */
     private void finishQuiz() {
         Intent resultIntent = new Intent();
         resultIntent.putExtra(EXTRA_SCORE, score);
@@ -163,6 +175,9 @@ public class QuizActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * Method which check if user answer was correct or not
+     */
     private void checkAnswer() {
         answered = true;
 
@@ -180,6 +195,9 @@ public class QuizActivity extends AppCompatActivity {
         updateHighscore(score);
     }
 
+    /**
+     * Display by color sign which answer was right
+     */
     private void showSolution() {
         rb1.setTextColor(Color.RED);
         rb2.setTextColor(Color.RED);
@@ -211,7 +229,6 @@ public class QuizActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-
                 int score = data.getIntExtra(QuizActivity.EXTRA_SCORE, 0);
                 if(score > highscore) {
                     updateHighscore(score);
@@ -219,12 +236,19 @@ public class QuizActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Loading high score from Shared Preferences
+     */
     private void loadHighscore() {
         SharedPreferences preferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         highscore = preferences.getInt(KEY_HIGHSCORE, 0);
         textViewHighscore.setText("Highscore: " + highscore);
     }
 
+    /**
+     * Updating high score in Shared Preferences if needed
+     * @param highscoreNew - high score to check if is greater than stored
+     */
     private void updateHighscore(int highscoreNew) {
         if (highscoreNew > highscore) {
 
@@ -238,6 +262,9 @@ public class QuizActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Prevent to quit quiz by accident
+     */
     @Override
     public void onBackPressed() {
         if(backPressedTime + 2000 > System.currentTimeMillis()) {
@@ -248,6 +275,9 @@ public class QuizActivity extends AppCompatActivity {
         backPressedTime = System.currentTimeMillis();
     }
 
+    /**
+     * clear memory on activity destroy
+     */
     @Override
     protected void onDestroy() {
         super.onDestroy();

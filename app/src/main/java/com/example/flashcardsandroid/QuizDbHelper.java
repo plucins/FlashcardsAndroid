@@ -24,6 +24,11 @@ public class QuizDbHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
+    /**
+     * Create database from provided schema
+     * After create table - fill it with test data
+     * @param db
+     */
     @Override
     public void onCreate(SQLiteDatabase db) {
         this.db = db;
@@ -42,12 +47,21 @@ public class QuizDbHelper extends SQLiteOpenHelper {
         fillQuestionsTable();
     }
 
+    /**
+     * Update db schema if needed
+     * @param db
+     * @param oldVersion
+     * @param newVersion
+     */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + QuestionsTable.TABLE_NAME);
         onCreate(db);
     }
 
+    /**
+     * Fill database schema with data
+     */
     private void fillQuestionsTable() {
         List<Question> questions = provideInitData();
         questions.forEach(u -> {
@@ -61,6 +75,9 @@ public class QuizDbHelper extends SQLiteOpenHelper {
         });
     }
 
+    /**
+     * @return List of Questions objects
+     */
     private List<Question> provideInitData() {
         List<Question> questions = new ArrayList<>();
         questions.add(new Question("Great Britain is an island made up of", "England, Scotland and Wales", "Britain, Scotland and Wales", "England and Ireland", 2));
@@ -73,6 +90,9 @@ public class QuizDbHelper extends SQLiteOpenHelper {
         return questions;
     }
 
+    /**
+     * @return List of Questions object stored in database
+     */
     public List<Question> getAllQuestions() {
         List<Question> questions = new ArrayList<>();
         db = getReadableDatabase();

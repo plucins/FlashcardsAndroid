@@ -6,8 +6,14 @@ import com.example.flashcardsandroid.model.Question;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class which provide data to fill up application
+ */
 public class DataProvider {
 
+    /**
+     * @return Questions for Quiz
+     */
     public List<Question> getQuestions() {
 
         List<Question> questions = new ArrayList<>();
