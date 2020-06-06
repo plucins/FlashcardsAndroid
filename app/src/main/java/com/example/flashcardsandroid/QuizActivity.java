@@ -48,8 +48,8 @@ public class QuizActivity extends AppCompatActivity {
 
         textColorDefaultRb = rb1.getTextColors();
 
-        DataProvider dataProvider = new DataProvider();
-        questions = dataProvider.getQuestions();
+        QuizDbHelper dbHelper = new QuizDbHelper(this);
+        questions = dbHelper.getAllQuestions();
         questionCountTotal = questions.size();
         Collections.shuffle(questions);
 

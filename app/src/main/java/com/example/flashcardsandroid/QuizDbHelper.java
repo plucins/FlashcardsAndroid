@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
 public class QuizDbHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "DB.db";
@@ -79,7 +78,7 @@ public class QuizDbHelper extends SQLiteOpenHelper {
         db = getReadableDatabase();
         Cursor c = db.rawQuery("SELECT * FROM " + QuestionsTable.TABLE_NAME, null);
 
-        if(c.moveToFirst()) {
+        if (c.moveToFirst()) {
             do {
                 Question question = new Question();
                 question.setQuestion(c.getString(c.getColumnIndex(QuestionsTable.COLUMN_QUESTION)));
@@ -90,7 +89,7 @@ public class QuizDbHelper extends SQLiteOpenHelper {
                 questions.add(question);
             } while (c.moveToNext());
         }
-
+        c.close();
         return questions;
     }
 
