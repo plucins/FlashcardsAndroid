@@ -6,10 +6,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 import com.example.flashcardsandroid.model.Question;
-import com.example.flashcardsandroid.model.QuizContract;
+import com.example.flashcardsandroid.model.QuizContract.*;
 
 import java.util.ArrayList;
 import java.util.List;
+
+
 
 public class QuizDbHelper extends SQLiteOpenHelper {
 
@@ -27,13 +29,13 @@ public class QuizDbHelper extends SQLiteOpenHelper {
         this.db = db;
 
         final String SQL_CREATE_QUESTIONS_TABLE = "CREATE TABLE " +
-                QuizContract.QuestionsTable.TABLE_NAME + " ( " +
-                QuizContract.QuestionsTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                QuizContract.QuestionsTable.COLUMN_QUESTION + " TEXT, " +
-                QuizContract.QuestionsTable.COLUMN_OPTION1 + " TEXT, " +
-                QuizContract.QuestionsTable.COLUMN_OPTION2 + " TEXT, " +
-                QuizContract.QuestionsTable.COLUMN_OPTION3 + " TEXT, " +
-                QuizContract.QuestionsTable.COLUMN_ANSWER_NR + " INTEGER" +
+                QuestionsTable.TABLE_NAME + " ( " +
+                QuestionsTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                QuestionsTable.COLUMN_QUESTION + " TEXT, " +
+                QuestionsTable.COLUMN_OPTION1 + " TEXT, " +
+                QuestionsTable.COLUMN_OPTION2 + " TEXT, " +
+                QuestionsTable.COLUMN_OPTION3 + " TEXT, " +
+                QuestionsTable.COLUMN_ANSWER_NR + " INTEGER" +
                 ")";
 
         db.execSQL(SQL_CREATE_QUESTIONS_TABLE);
@@ -42,19 +44,20 @@ public class QuizDbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        db.execSQL("DROP TABLE IF EXISTS " + QuestionsTable.TABLE_NAME);
+        onCreate(db);
     }
 
     private void fillQuestionsTable() {
         List<Question> questions = provideInitData();
         questions.forEach(u -> {
             ContentValues cv = new ContentValues();
-            cv.put(QuizContract.QuestionsTable.COLUMN_QUESTION, u.getQuestion());
-            cv.put(QuizContract.QuestionsTable.COLUMN_OPTION1, u.getOption1());
-            cv.put(QuizContract.QuestionsTable.COLUMN_OPTION2, u.getOption2());
-            cv.put(QuizContract.QuestionsTable.COLUMN_OPTION3, u.getOption3());
-            cv.put(QuizContract.QuestionsTable.COLUMN_ANSWER_NR, u.getAnswerNr());
-            db.insert(QuizContract.QuestionsTable.TABLE_NAME, null, cv);
+            cv.put(QuestionsTable.COLUMN_QUESTION, u.getQuestion());
+            cv.put(QuestionsTable.COLUMN_OPTION1, u.getOption1());
+            cv.put(QuestionsTable.COLUMN_OPTION2, u.getOption2());
+            cv.put(QuestionsTable.COLUMN_OPTION3, u.getOption3());
+            cv.put(QuestionsTable.COLUMN_ANSWER_NR, u.getAnswerNr());
+            db.insert(QuestionsTable.TABLE_NAME, null, cv);
         });
     }
 
