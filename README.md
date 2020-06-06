@@ -1,3 +1,5 @@
+https://travis-ci.org/plucins/FlashcardsAndroid.svg?branch=master
+
 # FlashcardsAndroid
 
 #Description
