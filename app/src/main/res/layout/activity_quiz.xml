@@ -27,6 +27,16 @@
     />
 
     <TextView
+            android:id="@+id/text_view_countdown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="00:30"
+            android:textColor="@android:color/black"
+            android:textSize="40sp" />
+
+
+    <TextView
             android:id="@+id/text_view_question_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
