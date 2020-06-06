@@ -129,6 +129,7 @@ public class QuizActivity extends AppCompatActivity {
         }
 
         showSolution();
+        updateHighscore(score);
     }
 
     private void showSolution() {
@@ -173,17 +174,22 @@ public class QuizActivity extends AppCompatActivity {
     private void loadHighscore() {
         SharedPreferences preferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         highscore = preferences.getInt(KEY_HIGHSCORE, 0);
-        textViewHighscore.setText("Highscore :" + highscore);
+        textViewHighscore.setText("Highscore: " + highscore);
     }
 
     private void updateHighscore(int highscoreNew) {
-        highscore = highscoreNew;
-        textViewHighscore.setText("Highscore :" + highscore);
+        if (highscoreNew > highscore) {
 
-        SharedPreferences preferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putInt(KEY_HIGHSCORE, highscore);
-        editor.apply();
+            highscore = highscoreNew;
+            textViewHighscore.setText("Highscore :" + highscore);
+
+            SharedPreferences preferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putInt(KEY_HIGHSCORE, highscore);
+            editor.apply();
+        }
     }
+
+
 
 }
