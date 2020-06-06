@@ -2,6 +2,7 @@ package com.example.flashcardsandroid;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
@@ -69,6 +70,26 @@ public class QuizDbHelper extends SQLiteOpenHelper {
         questions.add(new Question("In 1972 the UK joined", "NATO", "the European Economic Community", "the G7 group", 1));
         questions.add(new Question("The two main political parties are the Conservatives and", "Labour", "Liberals", "Social Democrats", 2));
         questions.add(new Question("The 20 or so most senior politicians are called the", "cabinet", "committee", "supreme council", 2));
+
+        return questions;
+    }
+
+    public List<Question> getAllQuestions() {
+        List<Question> questions = new ArrayList<>();
+        db = getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT * FROM " + QuestionsTable.TABLE_NAME, null);
+
+        if(c.moveToFirst()) {
+            do {
+                Question question = new Question();
+                question.setQuestion(c.getString(c.getColumnIndex(QuestionsTable.COLUMN_QUESTION)));
+                question.setOption1(c.getString(c.getColumnIndex(QuestionsTable.COLUMN_OPTION1)));
+                question.setOption2(c.getString(c.getColumnIndex(QuestionsTable.COLUMN_OPTION2)));
+                question.setOption3(c.getString(c.getColumnIndex(QuestionsTable.COLUMN_OPTION3)));
+                question.setAnswerNr(c.getInt(c.getColumnIndex(QuestionsTable.COLUMN_ANSWER_NR)));
+                questions.add(question);
+            } while (c.moveToNext());
+        }
 
         return questions;
     }
