@@ -3,6 +3,7 @@ package com.example.flashcardsandroid;
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -27,6 +28,7 @@ public class FlashCardActivity extends AppCompatActivity {
     private boolean mIsBackVisible = false;
     private View mCardFrontLayout;
     private View mCardBackLayout;
+    private long mLastClickTime = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +80,10 @@ public class FlashCardActivity extends AppCompatActivity {
     }
 
     public void flipCard(View view) {
+        if (SystemClock.elapsedRealtime() - mLastClickTime < 810) {
+            return;
+        }
+        mLastClickTime = SystemClock.elapsedRealtime();
         if (!mIsBackVisible) {
             mSetRightOut.setTarget(mCardFrontLayout);
             mSetLeftIn.setTarget(mCardBackLayout);
