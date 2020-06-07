@@ -36,11 +36,16 @@ public class StartingScreenActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * Presenting Quiz Activity
+     */
     private void startQuiz() {
         Intent intent = new Intent(StartingScreenActivity.this, QuizActivity.class);
         startActivityForResult(intent, REQUEST_CODE_QUIZ);
     }
-
+    /**
+     * Presenting FlashCard Activity
+     */
     private void startFlashCard() {
         Intent intent = new Intent(StartingScreenActivity.this, FlashCardActivity.class);
         startActivity(intent);
