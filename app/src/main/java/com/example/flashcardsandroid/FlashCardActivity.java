@@ -4,10 +4,23 @@ import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.flashcardsandroid.model.FlashCard;
+
+import java.util.List;
+
 public class FlashCardActivity extends AppCompatActivity {
+
+    DataProvider provider;
+    List<FlashCard> flashCards;
+    Button nextFlashCard;
+    TextView frontView;
+    TextView backView;
+    Integer currentCard = 0;
 
     private AnimatorSet mSetRightOut;
     private AnimatorSet mSetLeftIn;
@@ -18,11 +31,36 @@ public class FlashCardActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        provider = new DataProvider();
         setContentView(R.layout.activity_flash_card);
+        flashCards = provider.getFlashCards();
+        nextFlashCard = findViewById(R.id.button_next_flashcard);
         findViews();
+        frontView.setText(flashCards.get(currentCard).getPolishSide());
+        backView.setText(flashCards.get(currentCard).getEnglishSide());
         loadAnimations();
         changeCameraDistance();
 
+        nextFlashCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeFlashCardText();
+            }
+        });
+
+
+    }
+
+    private void changeFlashCardText() {
+        if (currentCard < flashCards.size() - 1) {
+            currentCard++;
+            frontView.setText(flashCards.get(currentCard).getPolishSide());
+            backView.setText(flashCards.get(currentCard).getEnglishSide());
+        } else {
+            currentCard = 0;
+            frontView.setText(flashCards.get(currentCard).getPolishSide());
+            backView.setText(flashCards.get(currentCard).getEnglishSide());
+        }
     }
 
     private void changeCameraDistance() {
@@ -40,6 +78,8 @@ public class FlashCardActivity extends AppCompatActivity {
     private void findViews() {
         mCardBackLayout = findViewById(R.id.card_back);
         mCardFrontLayout = findViewById(R.id.card_front);
+        frontView = findViewById(R.id.cardFrontTextView);
+        backView = findViewById(R.id.cardBackTextView);
     }
 
     public void flipCard(View view) {
@@ -58,38 +98,3 @@ public class FlashCardActivity extends AppCompatActivity {
         }
     }
 }
-//package com.example.flashcardsandroid;
-//
-//import androidx.appcompat.app.AppCompatActivity;
-//
-//import android.content.Intent;
-//import android.os.Bundle;
-//import android.view.View;
-//import android.widget.Button;
-//
-//public class FlashCardActivity extends AppCompatActivity {
-//
-//
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.flash_card);
-//
-//        Button backToMenu = findViewById(R.id.flashCardBackToMenuButton);
-//        Button nextFlashCard = findViewById(R.id.nextFlashCardButton);
-//
-//        backToMenu.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                backToMenu();
-//            }
-//        });
-//    }
-//
-//    private void backToMenu() {
-//        Intent intent = new Intent(FlashCardActivity.this, StartingScreenActivity.class);
-//        startActivity(intent);
-//    }
-//
-//
-//}
