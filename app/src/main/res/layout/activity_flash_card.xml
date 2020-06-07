@@ -2,39 +2,71 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
+    android:padding="16dp"
     tools:context=".FlashCardActivity">
 
+    <include
+        android:id="@+id/include"
+        layout="@layout/flash_card"
+        android:layout_width="350dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="150dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
-        android:id="@+id/flashCardBackToMenuButton"
-        android:layout_width="match_parent"
+        android:id="@+id/button_next_flashcard"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/buttonshape"
-        android:text="@string/backToMenu_button_text"
+        android:gravity="center"
+        android:text="@string/button_next_flashcard_text"
+        android:textColor="@color/colorFont"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/button_previous_flashcard"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/buttonshape"
+        android:gravity="center"
+        android:text="@string/button_previous_flashcard_text"
+        android:textColor="@color/colorFont"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/nextFlashCardButton"
-        android:layout_width="match_parent"
+        android:id="@+id/button_shuffle_flashcards"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/buttonshape"
-        android:text="@string/nextFlashCard_button_text"
-        app:layout_constraintBottom_toTopOf="@+id/flashCardBackToMenuButton"
+        android:gravity="center"
+        android:text="@string/button_shuffle_text"
+        android:textColor="@color/colorFont"
+        app:layout_constraintBottom_toTopOf="@+id/button_previous_flashcard"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <fragment
-        android:id="@+id/fragment3"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:defaultNavHost="true"
-        app:navGraph="@navigation/nav_graph"
-        tools:layout_editor_absoluteY="200dp" />
+    <TextView
+        android:id="@+id/flash_card_counter_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:textColor="@color/cardTextColor"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/include"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

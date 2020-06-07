@@ -30,10 +30,13 @@ public class DataProvider {
 
     public List<FlashCard> getFlashCards() {
         List<FlashCard> flashCards = new ArrayList<>();
-        flashCards.add(new FlashCard("pies", "dog"));
-        flashCards.add(new FlashCard("dom", "house"));
-        flashCards.add(new FlashCard("lampa", "lamp"));
-        flashCards.add(new FlashCard("komputer", "computer"));
+        flashCards.add(new FlashCard("odtąd", "thereafter"));
+        flashCards.add(new FlashCard("kompleksowy", "comprehensive"));
+        flashCards.add(new FlashCard("pracownik", "employee"));
+        flashCards.add(new FlashCard("pracodawca", "employer"));
+        flashCards.add(new FlashCard("referencje", "credentials"));
+        flashCards.add(new FlashCard("spór", "dispute"));
+        flashCards.add(new FlashCard("egzekwowalny", "enforceable"));
 
         return flashCards;
     }
