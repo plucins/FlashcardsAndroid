@@ -15,6 +15,9 @@ import com.example.flashcardsandroid.model.FlashCard;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Class that deals with animating flashcards
+ */
 public class FlashCardActivity extends AppCompatActivity {
 
     private List<FlashCard> flashCards;
@@ -51,6 +54,9 @@ public class FlashCardActivity extends AppCompatActivity {
         shuffleFlashCardsButton.setOnClickListener(v -> shuffleFlashCards());
     }
 
+    /**
+     * Randomize flashcards order
+     */
     private void shuffleFlashCards() {
         Collections.shuffle(flashCards);
         currentCard = 0;
@@ -60,6 +66,9 @@ public class FlashCardActivity extends AppCompatActivity {
         setCounterText();
     }
 
+    /**
+     * Method used to flip the card back to correct side after switching cards
+     */
     private void flipBackToFront() {
         if (mIsBackVisible) {
             mSetRightOut.setTarget(mCardBackLayout);
@@ -75,6 +84,9 @@ public class FlashCardActivity extends AppCompatActivity {
         counterView.setText(counterText);
     }
 
+    /**
+     * Navigate to previous flashcard
+     */
     private void previousFlashCard() {
         if (currentCard > 0) {
             currentCard--;
@@ -89,6 +101,9 @@ public class FlashCardActivity extends AppCompatActivity {
         setCounterText();
     }
 
+    /**
+     * Navigate to next flashcard
+     */
     private void nextFlashCard() {
         if (currentCard < flashCards.size() - 1) {
             currentCard++;
@@ -115,6 +130,9 @@ public class FlashCardActivity extends AppCompatActivity {
         mSetLeftIn = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.in_animation);
     }
 
+    /**
+     * Method used to get views for all necessary elements
+     */
     private void findViews() {
         shuffleFlashCardsButton = findViewById(R.id.button_shuffle_flashcards);
         nextFlashCardButton = findViewById(R.id.button_next_flashcard);
@@ -126,6 +144,10 @@ public class FlashCardActivity extends AppCompatActivity {
         backView = findViewById(R.id.cardBackTextView);
     }
 
+    /**
+     * Method used to flip the card.
+     * It can be activated again only after the animation was completed.
+     */
     public void flipCard(View view) {
         if (SystemClock.elapsedRealtime() - mLastClickTime < 810) {
             return;
