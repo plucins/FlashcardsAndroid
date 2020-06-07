@@ -4,11 +4,12 @@
     <string name="start_quizButton">Quiz</string>
     <string name="mainText">Aplikacja do nauki</string>
     <string name="next_question_button">Potwierdź</string>
-    <string name="backToMenu_button_text">Menu</string>
-    <string name="nextFlashCard_button_text">Następna</string>
     <string name="card_front_text">FRONT</string>
     <string name="card_back_text">BACK</string>
     <string name="button_next_flashcard_text">Następna</string>
     <string name="button_previous_flashcard_text">Poprzednia</string>
     <string name="button_shuffle_text">Przetasuj</string>
+    <string name="ans1_is_correct">Odpowiedz 1 jest poprawna</string>
+    <string name="ans2_is_correct">Odpowiedz 2 jest poprawna</string>
+    <string name="ans3_is_correct">Odpowiedz 3 jest poprawna</string>
 </resources>
