@@ -12,17 +12,21 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.flashcardsandroid.model.FlashCard;
 
+import java.util.Collections;
 import java.util.List;
 
 public class FlashCardActivity extends AppCompatActivity {
 
-    DataProvider provider;
-    List<FlashCard> flashCards;
-    Button nextFlashCardButton;
-    Button previousFlashCardButton;
-    TextView frontView;
-    TextView backView;
-    Integer currentCard = 0;
+    private DataProvider provider;
+    private List<FlashCard> flashCards;
+    private Button shuffleFlashCardsButton;
+    private Button nextFlashCardButton;
+    private Button previousFlashCardButton;
+    private TextView frontView;
+    private TextView backView;
+    private TextView counterView;
+    private Integer currentCard = 0;
+    private String counterText;
 
     private AnimatorSet mSetRightOut;
     private AnimatorSet mSetLeftIn;
@@ -37,9 +41,8 @@ public class FlashCardActivity extends AppCompatActivity {
         provider = new DataProvider();
         setContentView(R.layout.activity_flash_card);
         flashCards = provider.getFlashCards();
-        nextFlashCardButton = findViewById(R.id.button_next_flashcard);
-        previousFlashCardButton = findViewById(R.id.button_previous_flashcard);
         findViews();
+        setCounterText();
         frontView.setText(flashCards.get(currentCard).getPolishSide());
         backView.setText(flashCards.get(currentCard).getEnglishSide());
         loadAnimations();
@@ -47,8 +50,31 @@ public class FlashCardActivity extends AppCompatActivity {
 
         nextFlashCardButton.setOnClickListener(v -> nextFlashCard());
         previousFlashCardButton.setOnClickListener(v -> previousFlashCard());
+        shuffleFlashCardsButton.setOnClickListener(v -> shuffleFlashCards());
+    }
 
+    private void shuffleFlashCards() {
+        Collections.shuffle(flashCards);
+        currentCard = 0;
+        frontView.setText(flashCards.get(currentCard).getPolishSide());
+        backView.setText(flashCards.get(currentCard).getEnglishSide());
+        flipBackToFront();
+        setCounterText();
+    }
 
+    private void flipBackToFront() {
+        if (mIsBackVisible) {
+            mSetRightOut.setTarget(mCardBackLayout);
+            mSetLeftIn.setTarget(mCardFrontLayout);
+            mSetRightOut.start();
+            mSetLeftIn.start();
+            mIsBackVisible = false;
+        }
+    }
+
+    private void setCounterText() {
+        counterText = "Karta " + (currentCard + 1) + "/" + flashCards.size();
+        counterView.setText(counterText);
     }
 
     private void previousFlashCard() {
@@ -56,18 +82,13 @@ public class FlashCardActivity extends AppCompatActivity {
             currentCard--;
             frontView.setText(flashCards.get(currentCard).getPolishSide());
             backView.setText(flashCards.get(currentCard).getEnglishSide());
-            if (mIsBackVisible) {
-                mSetRightOut.setTarget(mCardBackLayout);
-                mSetLeftIn.setTarget(mCardFrontLayout);
-                mSetRightOut.start();
-                mSetLeftIn.start();
-                mIsBackVisible = false;
-            }
+            flipBackToFront();
         } else {
             currentCard = flashCards.size() - 1;
             frontView.setText(flashCards.get(currentCard).getPolishSide());
             backView.setText(flashCards.get(currentCard).getEnglishSide());
         }
+        setCounterText();
     }
 
     private void nextFlashCard() {
@@ -75,18 +96,13 @@ public class FlashCardActivity extends AppCompatActivity {
             currentCard++;
             frontView.setText(flashCards.get(currentCard).getPolishSide());
             backView.setText(flashCards.get(currentCard).getEnglishSide());
-            if (mIsBackVisible) {
-                mSetRightOut.setTarget(mCardBackLayout);
-                mSetLeftIn.setTarget(mCardFrontLayout);
-                mSetRightOut.start();
-                mSetLeftIn.start();
-                mIsBackVisible = false;
-            }
+            flipBackToFront();
         } else {
             currentCard = 0;
             frontView.setText(flashCards.get(currentCard).getPolishSide());
             backView.setText(flashCards.get(currentCard).getEnglishSide());
         }
+        setCounterText();
     }
 
     private void changeCameraDistance() {
@@ -102,8 +118,12 @@ public class FlashCardActivity extends AppCompatActivity {
     }
 
     private void findViews() {
+        shuffleFlashCardsButton = findViewById(R.id.button_shuffle_flashcards);
+        nextFlashCardButton = findViewById(R.id.button_next_flashcard);
+        previousFlashCardButton = findViewById(R.id.button_previous_flashcard);
         mCardBackLayout = findViewById(R.id.card_back);
         mCardFrontLayout = findViewById(R.id.card_front);
+        counterView = findViewById(R.id.flash_card_counter_text);
         frontView = findViewById(R.id.cardFrontTextView);
         backView = findViewById(R.id.cardBackTextView);
     }

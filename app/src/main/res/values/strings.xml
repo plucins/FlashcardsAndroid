@@ -10,4 +10,5 @@
     <string name="card_back_text">BACK</string>
     <string name="button_next_flashcard_text">Następna</string>
     <string name="button_previous_flashcard_text">Poprzednia</string>
+    <string name="button_shuffle_text">Przetasuj</string>
 </resources>
