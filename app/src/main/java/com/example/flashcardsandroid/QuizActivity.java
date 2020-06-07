@@ -116,9 +116,10 @@ public class QuizActivity extends AppCompatActivity {
             rb3.setText(currentQuestion.getOption3());
 
             questionCounter++;
-            textViewQuestionCount.setText("Pytanie: " + questionCounter + "/" + questionCountTotal);
+            String questionCounterText = "Pytanie: " + questionCounter + "/" + questionCountTotal;
+            textViewQuestionCount.setText(questionCounterText);
             answered = false;
-            buttonConfirmNext.setText("Potwierdz");
+            buttonConfirmNext.setText(R.string.next_question_button);
 
             timeLeftInMillis = COUNTDOWN_IN_MILLIS;
             startCountDown();
@@ -206,15 +207,15 @@ public class QuizActivity extends AppCompatActivity {
         switch (currentQuestion.getAnswerNr()){
             case 1:
                 rb1.setTextColor(Color.GREEN);
-                textViewQuestion.setText("Odpowiedz 1 jest poprawna");
+                textViewQuestion.setText(R.string.ans1_is_correct);
                 break;
             case 2:
                 rb2.setTextColor(Color.GREEN);
-                textViewQuestion.setText("Odpowiedz 2 jest poprawna");
+                textViewQuestion.setText(R.string.ans2_is_correct);
                 break;
             case 3:
                 rb3.setTextColor(Color.GREEN);
-                textViewQuestion.setText("Odpowiedz 3 jest poprawna");
+                textViewQuestion.setText(R.string.ans3_is_correct);
                 break;
         }
 
@@ -253,7 +254,7 @@ public class QuizActivity extends AppCompatActivity {
         if (highscoreNew > highscore) {
 
             highscore = highscoreNew;
-            textViewHighscore.setText("Highscore :" + highscore);
+            textViewHighscore.setText("Highscore: " + highscore);
 
             SharedPreferences preferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
             SharedPreferences.Editor editor = preferences.edit();

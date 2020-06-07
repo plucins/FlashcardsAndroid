@@ -17,7 +17,6 @@ import java.util.List;
 
 public class FlashCardActivity extends AppCompatActivity {
 
-    private DataProvider provider;
     private List<FlashCard> flashCards;
     private Button shuffleFlashCardsButton;
     private Button nextFlashCardButton;
@@ -26,7 +25,6 @@ public class FlashCardActivity extends AppCompatActivity {
     private TextView backView;
     private TextView counterView;
     private Integer currentCard = 0;
-    private String counterText;
 
     private AnimatorSet mSetRightOut;
     private AnimatorSet mSetLeftIn;
@@ -38,7 +36,7 @@ public class FlashCardActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        provider = new DataProvider();
+        DataProvider provider = new DataProvider();
         setContentView(R.layout.activity_flash_card);
         flashCards = provider.getFlashCards();
         findViews();
@@ -73,7 +71,7 @@ public class FlashCardActivity extends AppCompatActivity {
     }
 
     private void setCounterText() {
-        counterText = "Karta " + (currentCard + 1) + "/" + flashCards.size();
+        String counterText = "Karta " + (currentCard + 1) + "/" + flashCards.size();
         counterView.setText(counterText);
     }
 
