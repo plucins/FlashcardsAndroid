@@ -8,3 +8,10 @@
   
   #Tools 
     Trello (Task tracker) Github (Code tracker) 
+
+#Guid to run monkey test
+ - Make sure that app and emulator is up and running
+ - Move to Android SDK folder -- platforms-tools -- where adb command run
+ - Copy following command
+    adb -e shell monkey -p com.example.flashcardsandroid 1000
+
