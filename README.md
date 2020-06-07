@@ -4,11 +4,12 @@
   Application supporting language learning process. The main functionalities are quizzes and flashcards. At this stage the app supports only english language, in the future we hope to add more.
   
 ## Team 
-  Sławek (s15976) Adam (s15814)
+ - Sławomir Pluciński (s15976)
+ - Adam Kalwarczyk (s15814)
   
 ## Tools 
-  ### Trello (Task tracker)
-  ### Github (Code tracker) 
+ - Trello (Task tracker)
+ - Github (Code tracker) 
 
 ## Guide to running the monkey test
  - Make sure that app and emulator is up and running
