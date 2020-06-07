@@ -41,12 +41,7 @@ public class FlashCardActivity extends AppCompatActivity {
         loadAnimations();
         changeCameraDistance();
 
-        nextFlashCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                changeFlashCardText();
-            }
-        });
+        nextFlashCard.setOnClickListener(v -> changeFlashCardText());
 
 
     }
