@@ -1,15 +1,16 @@
 # FlashcardsAndroid
 
-#Description
-  Application to support language skill development. At the beginning with support for one language, in the future we hope to add more.
+## Description
+  Application supporting language learning process. The main functionalities are quizzes and flashcards. At this stage the app supports only english language, in the future we hope to add more.
   
- #Team 
+## Team 
   Sławek (s15976) Adam (s15814)
   
-  #Tools 
-    Trello (Task tracker) Github (Code tracker) 
+## Tools 
+  ### Trello (Task tracker)
+  ### Github (Code tracker) 
 
-#Guid to run monkey test
+## Guide to running the monkey test
  - Make sure that app and emulator is up and running
  - Move to Android SDK folder -- platforms-tools -- where adb command run
     `cd AppData\Local\Android\Sdk\platform-tools
