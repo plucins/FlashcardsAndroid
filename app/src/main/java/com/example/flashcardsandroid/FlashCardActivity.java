@@ -18,7 +18,8 @@ public class FlashCardActivity extends AppCompatActivity {
 
     DataProvider provider;
     List<FlashCard> flashCards;
-    Button nextFlashCard;
+    Button nextFlashCardButton;
+    Button previousFlashCardButton;
     TextView frontView;
     TextView backView;
     Integer currentCard = 0;
@@ -36,23 +37,51 @@ public class FlashCardActivity extends AppCompatActivity {
         provider = new DataProvider();
         setContentView(R.layout.activity_flash_card);
         flashCards = provider.getFlashCards();
-        nextFlashCard = findViewById(R.id.button_next_flashcard);
+        nextFlashCardButton = findViewById(R.id.button_next_flashcard);
+        previousFlashCardButton = findViewById(R.id.button_previous_flashcard);
         findViews();
         frontView.setText(flashCards.get(currentCard).getPolishSide());
         backView.setText(flashCards.get(currentCard).getEnglishSide());
         loadAnimations();
         changeCameraDistance();
 
-        nextFlashCard.setOnClickListener(v -> changeFlashCardText());
+        nextFlashCardButton.setOnClickListener(v -> nextFlashCard());
+        previousFlashCardButton.setOnClickListener(v -> previousFlashCard());
 
 
     }
 
-    private void changeFlashCardText() {
+    private void previousFlashCard() {
+        if (currentCard > 0) {
+            currentCard--;
+            frontView.setText(flashCards.get(currentCard).getPolishSide());
+            backView.setText(flashCards.get(currentCard).getEnglishSide());
+            if (mIsBackVisible) {
+                mSetRightOut.setTarget(mCardBackLayout);
+                mSetLeftIn.setTarget(mCardFrontLayout);
+                mSetRightOut.start();
+                mSetLeftIn.start();
+                mIsBackVisible = false;
+            }
+        } else {
+            currentCard = flashCards.size() - 1;
+            frontView.setText(flashCards.get(currentCard).getPolishSide());
+            backView.setText(flashCards.get(currentCard).getEnglishSide());
+        }
+    }
+
+    private void nextFlashCard() {
         if (currentCard < flashCards.size() - 1) {
             currentCard++;
             frontView.setText(flashCards.get(currentCard).getPolishSide());
             backView.setText(flashCards.get(currentCard).getEnglishSide());
+            if (mIsBackVisible) {
+                mSetRightOut.setTarget(mCardBackLayout);
+                mSetLeftIn.setTarget(mCardFrontLayout);
+                mSetRightOut.start();
+                mSetLeftIn.start();
+                mIsBackVisible = false;
+            }
         } else {
             currentCard = 0;
             frontView.setText(flashCards.get(currentCard).getPolishSide());
